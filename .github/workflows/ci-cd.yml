@@ -26,9 +26,6 @@ jobs:
           export NG_BUILD_MAX_WORKERS=2
           npm run build --prod
 
-      - name: Prerender Angular App
-        run: npm run prerender
-
       - name: Build Docker Image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/dating-app:latest .
 
