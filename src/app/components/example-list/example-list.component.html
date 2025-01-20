@@ -1,8 +1,10 @@
-<div>
-    <h2>Example List</h2>
+<div *ngIf="examples.length > 0; else noData">
     <ul>
         <li *ngFor="let example of examples">
-            {{ example.name }}
+            ID: {{ example.id }}, Name: {{ example.name }}
         </li>
     </ul>
 </div>
+<ng-template #noData>
+    <p>No data available</p>
+</ng-template>

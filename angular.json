@@ -5,11 +5,7 @@
   "projects": {
     "dating-app": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -17,9 +13,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "prerender": {
-              "discoverRoutes": false
-            },
             "outputPath": "dist/dating-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -27,7 +20,6 @@
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
@@ -35,11 +27,9 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts"
-           
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -88,7 +78,6 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
@@ -96,7 +85,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": []
           }
@@ -105,6 +94,6 @@
     }
   },
   "cli": {
-    "analytics": "1ddb1698-b90e-430e-bc7f-b938dfe53013"
+    "analytics": false
   }
 }

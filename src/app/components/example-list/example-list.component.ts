@@ -1,34 +1,23 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ExampleService, Example } from '../../services/example.service';
 import { CommonModule } from '@angular/common';
-import { ExampleService } from '../../services/example.service';
-import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-example-list',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './example-list.component.html',
-  styleUrls: ['./example-list.component.scss']
+  styleUrls: ['./example-list.component.css'],
 })
-export class ExampleListComponent implements OnInit, OnDestroy {
-  examples: any[] = [];
-  private destroy$ = new Subject<void>();
+export class ExampleListComponent implements OnInit {
+  examples: Example[] = [];
 
   constructor(private exampleService: ExampleService) {}
 
   ngOnInit(): void {
-    this.exampleService.getExamples().pipe(takeUntil(this.destroy$)).subscribe({
-      next: (data) => {
-        this.examples = data;
-      },
-      error: (err) => {
-        console.error('Error fetching examples:', err);
-      }
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
+    this.exampleService.getExamples().subscribe(
+      (data) => (this.examples = data),
+      (error) => console.error('Error fetching examples:', error)
+    );
   }
 }
