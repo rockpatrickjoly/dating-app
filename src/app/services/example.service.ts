@@ -16,6 +16,7 @@ export class ExampleService {
   constructor(private http: HttpClient) {}
 
   getExamples(): Observable<Example[]> {
+    console.log("passe par getExamples");
     return this.http.get<Example[]>(this.apiUrl);
   }
 }
