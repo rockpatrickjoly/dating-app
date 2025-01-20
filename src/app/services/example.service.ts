@@ -11,7 +11,7 @@ export interface Example {
   providedIn: 'root',
 })
 export class ExampleService {
-  private apiUrl = 'http://3.80.92.79:8080/examples';
+  private apiUrl = '/api/examples';
 
   constructor(private http: HttpClient) {}
 
