@@ -23,7 +23,7 @@ jobs:
 
       - name: Run Build
         run: |
-          export NODE_OPTIONS="--max-old-space-size=4096"
+          export NG_BUILD_MAX_WORKERS=2
           npm run build --prod
 
       - name: Prerender Angular App
