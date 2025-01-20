@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "NG_BUILD_MAX_WORKERS=2 ng build",
     "prerender": "ng run dating-app:prerender",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
