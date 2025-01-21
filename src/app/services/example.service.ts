@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
+
 
 export interface Example {
   id: number;
@@ -11,12 +13,13 @@ export interface Example {
   providedIn: 'root',
 })
 export class ExampleService {
-  private apiUrl = '/api/examples';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
   getExamples(): Observable<Example[]> {
     console.log("passe par getExamples");
-    return this.http.get<Example[]>(this.apiUrl);
+    console.log("using this url" + this.apiUrl);
+    return this.http.get<Example[]>(`${this.apiUrl}/examples`);
   }
 }
